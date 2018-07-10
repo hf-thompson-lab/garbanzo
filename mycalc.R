@@ -12,7 +12,7 @@
 #' mycalc(matrix(1:9, nrow = 3, ncol = 3), 10, "multiply")
 #'
 #' \dontrun{
-#' mycalc(1:5, c(5, 2, 3, 10, 2), "subtrat")
+#' mycalc(1:5, c(5, 2, 3, 10, 2), "subtract")
 #' }
 
 
