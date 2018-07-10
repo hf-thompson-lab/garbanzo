@@ -25,6 +25,7 @@ mycalc <- function(a, b, oper) {
     } else if (oper == "subtract") {
       result <- a - b
     } else if (oper == "divide") {
+      if (b==0){ stop("divide by zero error")}
       result <- a / b
     } else if (oper == "multiply") {
       result <- a * b
