@@ -1,0 +1,159 @@
+---
+title: "Git Discussion"
+author: "Thompson Lab"
+date: "July 10, 2018"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+<style>
+  p, li {font-size: 12pt;}
+  body {
+    font-family: Calibri;
+    background-color: #ffffff;
+    color: #2d313a;
+  }
+  h2 {color: #203b70; font-weight: bold;}
+  code {font-family: consolas;}
+  h4 {font-weight: bold;}
+</style>
+
+## Git and RStudio
+
+### Set Up
+
+1. In RStudio, navigate to Tools > Global Options > Git/SVN
+2. Browse to where you installed Git > bin > git.exe. Click OK.
+3. Enter `file.exists("~/.ssh/id_rsa.pub")` in the RStudio console
+    + If FALSE, create one: Tools > Global Options > Git/SVN > Create RSA Key
+4. In the Git/SVN pane of Global Options, view and copy your public key
+5. In GitHub, navigate to Settings > SSH and GPG keys > New SSH key
+    + Using SSH key is one way of connecting RStudio and GitHub
+    + However, GitHub recommends connecting via HTTPS rather than SSH
+    + You can change between HTTPS and SSH at any time, and you can also work around being prompted for your username and password when connecting via HTTPS
+6. Paste your public key from RStudio and save
+    + I like to include a note on what computer / software the key is for
+    
+<br>
+
+**Important!** Using version control with RStudio only works with RStudio Projects!
+
+
+* Projects can be created in a new directory, in an existing directory, or when cloning a version controlled repository
+* RProjects probably do not need to be version controlled, but some components like RData can be helpful if you want to ship data with your project
+
+### Exercise: Cats
+
+There is a repository called **garbanzo** on hfjtlab that contains some .R files that we can use to practice using Git with RStudio.
+
+Some options to practice working with Git and R Studio:
+
+
+* Clone the repository, make changes, commit and push back to origin
+    + We could intentionally create some conflicts for practice
+* Download the files and use them to create your own repository, then edit
+* Create a .gitignore to ignore RProject files
+* Visualize repository history in RStudio after making changes
+
+### Benefits of Integration
+
+* Easily install R packages directly from GitHub using `devtools::install_github`
+    + Does anyone currently use R packages found on GitHub in their work?
+
+
+* Easily maintain, use, and share your own R package
+    + Create functions and use them without loading them into memory (save yourself time, reduce copy and pasting!)
+    + Create vignettes to demonstrate analyses and results
+    + Ship data, code, and results together for reproducible work
+    + This [tutorial](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/) is simple but really helpful if you are interested in learning how to make an R package for your research!
+        + Additional [resource](http://kbroman.org/pkg_primer/pages/docs.html) on documentation using Roxygen2
+    
+    
+* GUI interface for basic Git commands
+    
+* Visualize repo version history in RStudio
+
+## Structure of work and repositories
+
+### Our organization: hfjtlab
+
+* Is this name okay? I made this a long time ago, and now would be the time to change anything.
+
+* Allows formation of teams, ability to set access levels for different users / repositories, and a centralized place for HF-JT Lab respositories
+
+* Everyone in the lab will be an owner of the organization (complete access to all repos)
+    + Collaborators can be invited to edit specific repositories
+    
+* What types of repositories do we want to have on the organizational page? Will all work be kept there, or just work that is relevant to multiple lab members?
+
+### Repositories
+
+* How can we be deliberate in choosing the scope of our repositories?
+
+* Is it important that all repositories be on the organizational page?
+
+#### Branches
+
+* Recognize that there are many different use cases for branches, including but not limited to:
+    + Collaborative work in which each user works in their own branch until ready to commit to master
+    + Multiple versions of the same project (allows for concurrent updates of old v and development of new v)
+    + Short-lived branches created to solve a specific problem, merge, then delete
+    
+* Recognize when permanent branches are ideal vs temporary branches
+    + Anyone have any examples from their own work?
+
+#### Data
+
+* Not everything related to a project should be pushed to GitHub (e.g., rasters)
+    + Files like .csv are usually fine (within limits)
+
+* If data can't be pushed to GitHub, should we track the files at all?
+    + Discuss...
+    
+* In what instances would be definitely want to have data under version control? In what instances would we *not* want this?
+
+#### Privacy
+
+* Organization and personal repositories are **public** by default
+    + Is this acceptable given the nature of our work?
+    + Are there institutional rules we need to follow?
+    
+#### Licenses
+
+* Does anyone have any ideas about best licenses for our work, or if one should be applied at all?
+
+### Server-specific issues
+
+* Any concerns about setting up Git on our server accounts?
+
+* Are there repositories that would be best hosted on the server, as opposed to GitHub?
+
+## Standards for use and record keeping
+
+### Ways to increase transparency
+
+* Make sure you have set up your name in Git so that commits are easily identifiable
+
+### Best practices to avoid headaches
+
+* When finished working, always push your changes to GitHub
+* When starting work, always pull your repo from GitHub
+    + Particularly important when collaborating and nearing time to merge branches
+
+## Next steps for getting the lab on version control
+
+* Get everyone into hfjtlab
+
+* Brainstorm logical and feasible repositories
+    + What branches?
+    + What files to track?
+    + What files to push to GitHub?
+    
+* Finalize and distribute Git / GitHub cheat slides (Lucy)
+    + Another [cheat sheet](http://cheat.errtheblog.com/s/git) made by someone who knows more than me!
+
